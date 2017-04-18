@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.cookie-parser.cookie-parser">
+            function <span class="apidocSignatureSpan"></span>cookie-parser
+            <span class="apidocSignatureSpan">(secret, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.cookie-parser.JSONCookie">
             function <span class="apidocSignatureSpan">cookie-parser.</span>JSONCookie
             <span class="apidocSignatureSpan">(str)</span>
@@ -103,6 +112,52 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.cookie-parser" id="apidoc.module.cookie-parser">module cookie-parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cookie-parser.cookie-parser" id="apidoc.element.cookie-parser.cookie-parser">
+        function <span class="apidocSignatureSpan"></span>cookie-parser
+        <span class="apidocSignatureSpan">(secret, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function cookieParser(secret, options) {
+  return function cookieParser(req, res, next) {
+    if (req.cookies) {
+      return next();
+    }
+
+    var cookies = req.headers.cookie;
+    var secrets = !secret || Array.isArray(secret)
+      ? (secret || [])
+      : [secret];
+
+    req.secret = secrets[0];
+    req.cookies = Object.create(null);
+    req.signedCookies = Object.create(null);
+
+    // no cookies
+    if (!cookies) {
+      return next();
+    }
+
+    req.cookies = cookie.parse(cookies, options);
+
+    // parse signed cookies
+    if (secrets.length !== 0) {
+      req.signedCookies = signedCookies(req.cookies, secrets);
+      req.signedCookies = JSONCookies(req.signedCookies);
+    }
+
+    // parse JSON cookies
+    req.cookies = JSONCookies(req.cookies);
+
+    next();
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
