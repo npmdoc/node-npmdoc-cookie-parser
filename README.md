@@ -1,6 +1,6 @@
 # npmdoc-cookie-parser
 
-#### api documentation for  [cookie-parser (v1.4.3)](https://github.com/expressjs/cookie-parser)  [![npm package](https://img.shields.io/npm/v/npmdoc-cookie-parser.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-cookie-parser) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-cookie-parser.svg)](https://travis-ci.org/npmdoc/node-npmdoc-cookie-parser)
+#### basic api documentation for  [cookie-parser (v1.4.3)](https://github.com/expressjs/cookie-parser)  [![npm package](https://img.shields.io/npm/v/npmdoc-cookie-parser.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-cookie-parser) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-cookie-parser.svg)](https://travis-ci.org/npmdoc/node-npmdoc-cookie-parser)
 
 #### cookie parsing with signatures
 
@@ -82,7 +82,8 @@
         "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
         "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
     },
-    "version": "1.4.3"
+    "version": "1.4.3",
+    "bin": {}
 }
 ```
 
